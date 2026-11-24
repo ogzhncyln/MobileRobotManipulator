@@ -1,0 +1,9 @@
+# Beceri sunucusuna gönderilen genel amaçlı görev
+string skill        # navigate_room | scan_room | pick | place | open_door | charge
+string[] args
+---
+bool success
+string message
+---
+float32 progress    # 0..1
+string status

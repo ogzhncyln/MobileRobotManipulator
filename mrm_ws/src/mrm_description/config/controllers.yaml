@@ -1,0 +1,64 @@
+# ros2_control kontrolcu yapilandirmasi (gazebo_ros2_control icinde calisir)
+#
+# Tasarim notu: kol neden tork (effort) arayuzuyle suruluyor?
+#   gazebo_ros2_control 0.4.x, "position" komutlarini her fizik adiminda
+#   eklemleri SetPosition ile dogrudan ayarlayarak uygular. Bu, kol linklerinin hizini
+#   surekli sifirlar ve eklem kisitlari uzerinden mobil tabana momentum enjekte
+#   eder: taban zamanla kayar ve kararsiz hale gelir (deneysel olarak dogrulandi).
+#   Tork arayuzunde JointTrajectoryController bir PID ile tork uretir, Gazebo bunu
+#   gercek kuvvet olarak uygular (SetForce) -> fiziksel olarak tutarli.
+#   Gripper parmaklari ~1 g oldugu icin onlar position arayuzunde kalabilir.
+controller_manager:
+  ros__parameters:
+    use_sim_time: true
+    update_rate: 1000  # Hz (fizik adimiyla ayni)
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    gripper_controller:
+      type: position_controllers/GripperActionController
+
+    # gazebo_ros2_control 0.4.10'da URDF <mimic> sağ parmağı takip ettirmedi (test edildi):
+    # sağ parmak ayrı bir pozisyon kontrolcüsüyle, sol parmakla aynı değere sürülür.
+    gripper_right_controller:
+      type: position_controllers/JointGroupPositionController
+
+arm_controller:
+  ros__parameters:
+    use_sim_time: true
+    joints: [joint1, joint2, joint3, joint4]
+    command_interfaces: [effort]
+    state_interfaces: [position, velocity]
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    open_loop_control: false
+    # PID: tork = p*hata + i*integral + d*hiz_hatasi  (Nm, rad)
+    gains:
+      joint1: {p: 30.0, i: 5.0, d: 0.6, i_clamp: 0.5}
+      joint2: {p: 40.0, i: 8.0, d: 0.8, i_clamp: 1.0}
+      joint3: {p: 25.0, i: 5.0, d: 0.25, i_clamp: 0.8}
+      joint4: {p: 8.0, i: 2.0, d: 0.03, i_clamp: 0.3}   # bilek ataleti cok kucuk -> kucuk d
+    constraints:
+      stopped_velocity_tolerance: 0.05
+      goal_time: 2.0
+      joint1: {trajectory: 0.3, goal: 0.03}
+      joint2: {trajectory: 0.3, goal: 0.03}
+      joint3: {trajectory: 0.3, goal: 0.03}
+      joint4: {trajectory: 0.3, goal: 0.03}
+
+gripper_controller:
+  ros__parameters:
+    use_sim_time: true
+    joint: gripper_left_joint
+    allow_stalling: true
+    goal_tolerance: 0.002
+
+gripper_right_controller:
+  ros__parameters:
+    use_sim_time: true
+    joints: [gripper_right_joint]

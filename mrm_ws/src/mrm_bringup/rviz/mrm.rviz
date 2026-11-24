@@ -1,0 +1,80 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Cell Size: 1
+      Plane Cell Count: 12
+      Value: true
+    - Class: rviz_default_plugins/Map
+      Name: Map
+      Topic: {Value: /map, Durability Policy: Transient Local}
+      Value: true
+    - Class: rviz_default_plugins/Map
+      Name: Global Costmap
+      Topic: {Value: /global_costmap/costmap}
+      Color Scheme: costmap
+      Alpha: 0.4
+      Value: true
+    - Class: rviz_default_plugins/Map
+      Name: Local Costmap
+      Topic: {Value: /local_costmap/costmap}
+      Color Scheme: costmap
+      Alpha: 0.5
+      Value: true
+    - Class: rviz_default_plugins/RobotModel
+      Name: Robot
+      Description Topic: {Value: /robot_description}
+      Value: true
+    - Class: rviz_default_plugins/LaserScan
+      Name: Lidar
+      Topic: {Value: /scan, Reliability Policy: Best Effort}
+      Size (m): 0.03
+      Color Transformer: FlatColor
+      Color: 255; 0; 255
+      Value: true
+    - Class: rviz_default_plugins/Path
+      Name: Global Plan
+      Topic: {Value: /plan}
+      Color: 0; 120; 255
+      Value: true
+    - Class: rviz_default_plugins/ParticleCloud
+      Name: AMCL Particles
+      Topic: {Value: /particle_cloud, Reliability Policy: Best Effort}
+      Value: true
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Detections
+      Topic: {Value: /mrm/detection_markers}
+      Value: true
+    - Class: rviz_default_plugins/Marker
+      Name: Battery
+      Topic: {Value: /mrm/battery_marker}
+      Value: true
+    - Class: rviz_default_plugins/Image
+      Name: Camera (detections)
+      Topic: {Value: /mrm/detection_image}
+      Value: true
+  Global Options:
+    Fixed Frame: map
+    Background Color: 48; 48; 48
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/SetInitialPose
+      Topic: {Value: /initialpose}
+    - Class: rviz_default_plugins/SetGoal
+      Topic: {Value: /goal_pose}
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Name: Current View
+      Scale: 60
+      X: 4
+      Y: 0
+    Saved: ~
+Window Geometry:
+  Width: 1400
+  Height: 900

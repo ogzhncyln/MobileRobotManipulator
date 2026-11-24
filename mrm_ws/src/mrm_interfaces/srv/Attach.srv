@@ -1,0 +1,11 @@
+# Gazebo'da iki link arasına sabit (fixed) eklem oluşturur / kaldırır
+string model_name_1
+string link_name_1
+string model_name_2
+string link_name_2
+geometry_msgs/Point link1_offset   # link_1 çerçevesinde kontrol noktası (örn. parmak ucu)
+float64 max_distance               # >0 ise: kontrol noktası ile link_2 arası mesafe bundan büyükse reddet
+---
+bool success
+string message
+float64 distance

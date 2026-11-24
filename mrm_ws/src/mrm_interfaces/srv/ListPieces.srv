@@ -1,0 +1,3 @@
+string room    # Boş ise tüm odalar
+---
+Piece[] pieces

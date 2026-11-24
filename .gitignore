@@ -1,0 +1,14 @@
+# colcon derleme ciktilari
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# push disi
+docs/
+.claude/
+mrm_ws/build/
+mrm_ws/install/
+mrm_ws/log/

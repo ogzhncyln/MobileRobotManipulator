@@ -1,0 +1,205 @@
+# OTOMATIK URETILDI: scripts/generate_world.py
+room_order: [room1, room2, room3, room4]
+rooms:
+  room1:
+    bounds: [0.0, 4.0, 0.0, 4.0]
+    center: [2.0, 2.0]
+    keepout:
+    - [2.0, 2.0, 0.75]
+    - [1.4, 0.35, 0.75]
+    - [2.0, 0.35, 0.75]
+    - [2.6, 0.35, 0.75]
+    - [4.0, 2.0, 1.1]
+    - [3.285, 1.25, 0.75]
+    - [3.935, 1.25, 0.6]
+    - [1.0, 2.98, 0.9]
+    - [1.0, 3.58, 0.6]
+    - [1.0, 2.0, 0.6]
+  room2:
+    bounds: [4.0, 8.0, 0.0, 4.0]
+    center: [6.0, 2.0]
+    keepout:
+    - [6.0, 2.0, 0.75]
+    - [5.4, 3.65, 0.75]
+    - [6.0, 3.65, 0.75]
+    - [6.6, 3.65, 0.75]
+    - [4.0, 2.0, 1.1]
+    - [6.0, 0.0, 1.1]
+    - [5.25, 0.715, 0.75]
+    - [5.25, 0.065, 0.6]
+  room3:
+    bounds: [4.0, 8.0, -4.0, 0.0]
+    center: [6.0, -2.0]
+    keepout:
+    - [6.0, -2.0, 0.75]
+    - [7.65, -1.4, 0.75]
+    - [7.65, -2.0, 0.75]
+    - [7.65, -2.6, 0.75]
+    - [6.0, 0.0, 1.1]
+    - [4.0, -2.0, 1.1]
+    - [4.715, -1.25, 0.75]
+    - [4.065, -1.25, 0.6]
+  room4:
+    bounds: [0.0, 4.0, -4.0, 0.0]
+    center: [2.0, -2.0]
+    keepout:
+    - [2.0, -2.0, 0.75]
+    - [0.35, -1.4, 0.75]
+    - [0.35, -2.0, 0.75]
+    - [0.35, -2.6, 0.75]
+    - [4.0, -2.0, 1.1]
+doors:
+  door_12:
+    rooms: [room1, room2]
+    approach_from: room1
+    panel_center: [4.0, 2.0]
+    button_pos: [3.935, 1.25, 0.2]
+    button_yaw: -3.14159
+    button_size: [0.03, 0.1, 0.1]
+    pre_button_pose: [3.285, 1.25, 0.0]
+    pass_before: [3.3, 2.0, 0.0]
+    pass_after: [4.7, 2.0, 0.0]
+  door_23:
+    rooms: [room2, room3]
+    approach_from: room2
+    panel_center: [6.0, 0.0]
+    button_pos: [5.25, 0.065, 0.2]
+    button_yaw: 1.5708
+    button_size: [0.03, 0.1, 0.1]
+    pre_button_pose: [5.25, 0.715, -1.5708]
+    pass_before: [6.0, 0.7, -1.5708]
+    pass_after: [6.0, -0.7, -1.5708]
+  door_34:
+    rooms: [room3, room4]
+    approach_from: room3
+    panel_center: [4.0, -2.0]
+    button_pos: [4.065, -1.25, 0.2]
+    button_yaw: -0.0
+    button_size: [0.03, 0.1, 0.1]
+    pre_button_pose: [4.715, -1.25, 3.1416]
+    pass_before: [4.7, -2.0, 3.1416]
+    pass_after: [3.3, -2.0, 3.1416]
+bins:
+  bin_room1_red:
+    room: room1
+    color: red
+    position: [1.4, 0.35]
+    approach_yaw: -1.5708
+    height: 0.1
+    size: 0.22
+    tag_id: 0
+    tag_size: 0.072
+  bin_room1_green:
+    room: room1
+    color: green
+    position: [2.0, 0.35]
+    approach_yaw: -1.5708
+    height: 0.1
+    size: 0.22
+    tag_id: 1
+    tag_size: 0.072
+  bin_room1_blue:
+    room: room1
+    color: blue
+    position: [2.6, 0.35]
+    approach_yaw: -1.5708
+    height: 0.1
+    size: 0.22
+    tag_id: 2
+    tag_size: 0.072
+  bin_room2_blue:
+    room: room2
+    color: blue
+    position: [5.4, 3.65]
+    approach_yaw: 1.5708
+    height: 0.1
+    size: 0.22
+    tag_id: 3
+    tag_size: 0.072
+  bin_room2_red:
+    room: room2
+    color: red
+    position: [6.0, 3.65]
+    approach_yaw: 1.5708
+    height: 0.1
+    size: 0.22
+    tag_id: 4
+    tag_size: 0.072
+  bin_room2_green:
+    room: room2
+    color: green
+    position: [6.6, 3.65]
+    approach_yaw: 1.5708
+    height: 0.1
+    size: 0.22
+    tag_id: 5
+    tag_size: 0.072
+  bin_room3_green:
+    room: room3
+    color: green
+    position: [7.65, -1.4]
+    approach_yaw: 0.0
+    height: 0.1
+    size: 0.22
+    tag_id: 6
+    tag_size: 0.072
+  bin_room3_blue:
+    room: room3
+    color: blue
+    position: [7.65, -2.0]
+    approach_yaw: 0.0
+    height: 0.1
+    size: 0.22
+    tag_id: 7
+    tag_size: 0.072
+  bin_room3_red:
+    room: room3
+    color: red
+    position: [7.65, -2.6]
+    approach_yaw: 0.0
+    height: 0.1
+    size: 0.22
+    tag_id: 8
+    tag_size: 0.072
+  bin_room4_red:
+    room: room4
+    color: red
+    position: [0.35, -1.4]
+    approach_yaw: 3.14159
+    height: 0.1
+    size: 0.22
+    tag_id: 9
+    tag_size: 0.072
+  bin_room4_blue:
+    room: room4
+    color: blue
+    position: [0.35, -2.0]
+    approach_yaw: 3.14159
+    height: 0.1
+    size: 0.22
+    tag_id: 10
+    tag_size: 0.072
+  bin_room4_green:
+    room: room4
+    color: green
+    position: [0.35, -2.6]
+    approach_yaw: 3.14159
+    height: 0.1
+    size: 0.22
+    tag_id: 11
+    tag_size: 0.072
+colors: [red, green, blue]
+dock:
+  name: dock1
+  room: room1
+  pose: [1.0, 3.58, -1.5708]
+  staging: [1.0, 2.98, 1.5708]
+  charge_radius: 0.1
+  tag_id: 20
+  tag_size: 0.112
+  tag_to_dock: 0.25
+  side_wall_dist: 0.95
+  rear_dist: 0.226
+robot_start: [1.0, 2.0, 0.0]
+piece_size: 0.035
+spawn: {wall_margin: 0.45, min_separation: 0.55}

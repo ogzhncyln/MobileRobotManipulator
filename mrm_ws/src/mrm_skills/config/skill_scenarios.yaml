@@ -1,0 +1,75 @@
+# ALT SİMÜLASYON SENARYOLARI (mrm_skills/skill_test.py)
+#
+# Tam görev (4 oda, tarama, kapılar, şarj) ~30+ dk sürer. Bu senaryolar tek bir Gazebo
+# oturumunda, Oda 1'de, robotun TEMEL becerilerini (yanaşma, kavrama, bırakma) ayrı ayrı
+# ve tekrarlanabilir biçimde dener. Her senaryo öncesi: dünya modeli sıfırlanır, küpler
+# silinir, robot 'robot' pozuna yeniden konumlandırılır (AMCL'ye /initialpose verilir), küpler oluşturulur.
+#
+#   robot:  [x, y, yaw]            map/dünya çerçevesi (ikisi aynı)
+#   pieces: ad -> {color, x, y, est_err: [dx, dy], known: true}
+#           est_err: dünya modeline verilen konum hatası (tarama hatası / itilmiş küp benzetimi)
+#           known: false -> küp dünya modeline eklenmez (robotun bilmediği engel)
+#   steps:  [beceri, arg...]       "pick t", "place t bin_room1_red" ...
+#   expect: hedef -> held | in_bin:<kutu> ;  no_push: itilmemesi gereken küpler
+scenarios:
+  pick_basic:
+    desc: Tek küp, robot ona yakın ve dönük; 3 cm tarama hatası
+    robot: [1.2, 2.0, 0.0]
+    pieces:
+      t: {color: red, x: 2.40, y: 2.60, est_err: [0.03, -0.03]}
+    steps: [[pick, t]]
+    expect: {t: held}
+
+  pick_behind:
+    desc: Küp robotun arkasında; Nav2 dönüşü + farklı yönden yanaşma
+    robot: [1.6, 1.6, 3.14]
+    pieces:
+      t: {color: green, x: 3.00, y: 2.90, est_err: [-0.04, 0.02]}
+    steps: [[pick, t]]
+    expect: {t: held}
+
+  pick_neighbors:
+    desc: Hedefin yanında ve varsayılan yaklaşma pozunda başka küpler (itilmemeli)
+    robot: [1.2, 1.5, 0.0]
+    pieces:
+      t:  {color: red,   x: 2.60, y: 2.70, est_err: [0.02, 0.02]}
+      n1: {color: blue,  x: 2.60, y: 2.95, est_err: [0.0, 0.0]}
+      n2: {color: green, x: 2.22, y: 2.38, est_err: [0.0, 0.0]}
+      n3: {color: red,   x: 2.95, y: 2.95, est_err: [0.0, 0.0]}
+    steps: [[pick, t]]
+    expect: {t: held}
+    no_push: [n1, n2, n3]
+
+  pick_unknown_obstacle:
+    desc: Yaklaşma yolunda dünya modelinde OLMAYAN bir küp (sadece canlı algıyla görülür)
+    robot: [1.2, 2.0, 0.0]
+    pieces:
+      t: {color: blue, x: 2.50, y: 2.00, est_err: [0.0, 0.03]}
+      u: {color: green, x: 1.85, y: 2.00, known: false}
+    steps: [[pick, t]]
+    expect: {t: held}
+    no_push: [u]
+
+  pick_pushed:
+    desc: Dünya modelindeki konum 24 cm yanlış (küp itilmiş gibi) -> çevrede yeniden bulma
+    robot: [1.2, 2.2, 0.0]
+    pieces:
+      t: {color: green, x: 2.50, y: 1.60, est_err: [0.22, 0.10]}
+    steps: [[pick, t]]
+    expect: {t: held}
+
+  pick_blind:
+    desc: Küp robotun hemen önünde, kameranın kör bölgesinde (önüne katılmış küp)
+    robot: [1.5, 2.8, 0.0]
+    pieces:
+      t: {color: red, x: 1.69, y: 2.80, est_err: [0.02, 0.0]}
+    steps: [[pick, t]]
+    expect: {t: held}
+
+  pick_place:
+    desc: Al ve aynı renkteki kutuya bırak (AprilTag yanaşma dahil)
+    robot: [1.2, 2.0, 0.0]
+    pieces:
+      t: {color: green, x: 2.30, y: 1.55, est_err: [0.02, 0.03]}
+    steps: [[pick, t], [place, t, bin_room1_green]]
+    expect: {t: in_bin:bin_room1_green}

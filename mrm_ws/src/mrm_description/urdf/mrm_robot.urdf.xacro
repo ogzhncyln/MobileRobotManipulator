@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot name="mrm_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="prefix" default="" />
+  <xacro:arg name="use_sim" default="true" />
+  <xacro:arg name="use_fake_hardware" default="false" />
+  <xacro:arg name="fake_sensor_commands" default="false" />
+  <xacro:property name="up" value="$(find turtlebot3_manipulation_gazebo)" />
+
+  <xacro:include filename="${up}/gazebo/materials.xacro" />
+  <xacro:include filename="${up}/urdf/turtlebot3_waffle_pi.urdf.xacro" />
+  <xacro:include filename="$(find mrm_description)/urdf/mrm_waffle_pi.gazebo.xacro" />
+  <xacro:include filename="$(find mrm_description)/urdf/mrm_open_manipulator_x.urdf.xacro" />
+  <xacro:include filename="${up}/gazebo/open_manipulator_x.gazebo.xacro" />
+  <xacro:include filename="$(find mrm_description)/urdf/mrm_ros2_control.xacro" />
+  <xacro:include filename="$(find mrm_description)/urdf/rgbd_camera.xacro" />
+
+  <xacro:turtlebot3_waffle_pi prefix="$(arg prefix)" />
+  <xacro:mrm_waffle_pi_gazebo prefix="$(arg prefix)" />
+
+  <joint name="$(arg prefix)base_fixed" type="fixed">
+    <parent link="$(arg prefix)base_link"/>
+    <child link="$(arg prefix)link1"/>
+    <origin xyz="-0.092 0.0 0.091" rpy="0 0 0"/>
+  </joint>
+  <xacro:mrm_open_manipulator_x prefix="$(arg prefix)" />
+  <xacro:open_manipulator_x_gazebo prefix="$(arg prefix)" />
+
+  <xacro:rgbd_camera parent="$(arg prefix)base_link" xyz="0.085 0 0.105" pitch="0.30" />
+
+  <xacro:mrm_ros2_control name="MrmSystem" prefix="$(arg prefix)"/>
+
+  <gazebo>
+    <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+      <parameters>$(find mrm_description)/config/controllers.yaml</parameters>
+    </plugin>
+  </gazebo>
+</robot>

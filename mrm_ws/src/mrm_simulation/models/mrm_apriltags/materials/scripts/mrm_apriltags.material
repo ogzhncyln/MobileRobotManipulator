@@ -1,0 +1,246 @@
+material Mrm/Tag0
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      specular 0 0 0 1
+      emissive 0.4 0.4 0.4 1
+      texture_unit
+      {
+        texture tag36h11_00.png
+        filtering none
+      }
+    }
+  }
+}
+
+material Mrm/Tag1
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      specular 0 0 0 1
+      emissive 0.4 0.4 0.4 1
+      texture_unit
+      {
+        texture tag36h11_01.png
+        filtering none
+      }
+    }
+  }
+}
+
+material Mrm/Tag2
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      specular 0 0 0 1
+      emissive 0.4 0.4 0.4 1
+      texture_unit
+      {
+        texture tag36h11_02.png
+        filtering none
+      }
+    }
+  }
+}
+
+material Mrm/Tag3
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      specular 0 0 0 1
+      emissive 0.4 0.4 0.4 1
+      texture_unit
+      {
+        texture tag36h11_03.png
+        filtering none
+      }
+    }
+  }
+}
+
+material Mrm/Tag4
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      specular 0 0 0 1
+      emissive 0.4 0.4 0.4 1
+      texture_unit
+      {
+        texture tag36h11_04.png
+        filtering none
+      }
+    }
+  }
+}
+
+material Mrm/Tag5
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      specular 0 0 0 1
+      emissive 0.4 0.4 0.4 1
+      texture_unit
+      {
+        texture tag36h11_05.png
+        filtering none
+      }
+    }
+  }
+}
+
+material Mrm/Tag6
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      specular 0 0 0 1
+      emissive 0.4 0.4 0.4 1
+      texture_unit
+      {
+        texture tag36h11_06.png
+        filtering none
+      }
+    }
+  }
+}
+
+material Mrm/Tag7
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      specular 0 0 0 1
+      emissive 0.4 0.4 0.4 1
+      texture_unit
+      {
+        texture tag36h11_07.png
+        filtering none
+      }
+    }
+  }
+}
+
+material Mrm/Tag8
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      specular 0 0 0 1
+      emissive 0.4 0.4 0.4 1
+      texture_unit
+      {
+        texture tag36h11_08.png
+        filtering none
+      }
+    }
+  }
+}
+
+material Mrm/Tag9
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      specular 0 0 0 1
+      emissive 0.4 0.4 0.4 1
+      texture_unit
+      {
+        texture tag36h11_09.png
+        filtering none
+      }
+    }
+  }
+}
+
+material Mrm/Tag10
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      specular 0 0 0 1
+      emissive 0.4 0.4 0.4 1
+      texture_unit
+      {
+        texture tag36h11_10.png
+        filtering none
+      }
+    }
+  }
+}
+
+material Mrm/Tag11
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      specular 0 0 0 1
+      emissive 0.4 0.4 0.4 1
+      texture_unit
+      {
+        texture tag36h11_11.png
+        filtering none
+      }
+    }
+  }
+}
+
+material Mrm/Tag20
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      specular 0 0 0 1
+      emissive 0.4 0.4 0.4 1
+      texture_unit
+      {
+        texture tag36h11_20.png
+        filtering none
+      }
+    }
+  }
+}
