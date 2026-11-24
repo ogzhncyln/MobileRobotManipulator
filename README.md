@@ -32,6 +32,10 @@ flowchart LR
     GZ --> PER
 ```
 
+## Demo
+
+[Proje tanıtım videosu (YouTube)](https://www.youtube.com/watch?v=I_4om-5Doz4)
+
 ## Gereksinimler
 
 - Ubuntu 22.04
