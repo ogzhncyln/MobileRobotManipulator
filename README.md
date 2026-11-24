@@ -1,4 +1,4 @@
-# Mobil Manipülatör ile Renk Ayıklama — Nav2 + MoveIt 2 + PlanSys2
+# Mobil Manipülatör Projesi
 
 ROS 2 Humble ve Gazebo Classic üzerinde çalışan otonom bir mobil manipülatör sistemi. Platform,
 TurtleBot3 Waffle Pi tabanı ve OpenMANIPULATOR-X koldan oluşur. Robot dört odayı sırayla gezer ve her
